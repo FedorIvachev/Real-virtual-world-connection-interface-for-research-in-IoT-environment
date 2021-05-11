@@ -1,0 +1,719 @@
+% !TeX root = ../thuthesis-example.tex
+
+%\chapter{Supplementary material}
+
+
+
+% \section{Visualization of Attention Weights}
+
+% These experiments aim to analyse some inner properties of the model that were not shown in the paper:
+% \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+% 	\item Vizualize at each stack of the encoder how the self attention change for regular image
+% 	\item Case of occlusion of two predictions how are the attention maps: For example, how the attention of enc and dec change with depth in order to find the self-att of the same object and how slot coordinates their duties with each other and then changes the picture to high occlusion, iou $> 0.7$ object diagram, to see if self-attention runs to the nearby object in the case of high occlusion.
+% 	\item Vizualize at each stack of the decoder: Eventhough initially each object queries are responsible for many zones, at the last layer each slot has an attention for a single object, that means that at each stacking decoder each object queries will correct its spatial attention.
+% \end{itemize}
+
+% Note: we extract attention weights averaged over all heads. Attention weights are given by the following vectorized formula $softmax(\frac{QK^{T}}{\sqrt{d_{k}}})$. On these experience we show attention weights for each object of the image. We use 8 multi attention heads and 6 layers for both encoder and decoder.
+
+% \subsection{Attention weights on encoder}
+% Hooks are used to extract output of each layers of the decoder, their shape is $[N, L, L]$ with $N$ the batch size, and $L$ the size of the last feature map. Hence we get a relative attention weight w.r.t to each point. 
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/1st_layer.png}
+% 	\caption{first layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/2nd_layer.png}
+% 	\caption{second layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/3rd_layer.png}
+% 	\caption{third layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/4th_layer.png}
+% 	\caption{fourth layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/5th_layer.png}
+% 	\caption{fifth layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/6th_layer.png}
+% 	\caption{last layer}
+% \end{figure}
+% \FloatBarrier
+
+% We can observe that at each layer the encoder seperates the two cat instances, the first layer is outputs near random attentions, then the 2nd and 3rd layers detects the two cats instances, and in the fourth layer the encoder seperate the instances. 
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/enc1.png}
+% 	\caption{first layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/lastenc.png}
+% 	\caption{last layer}
+% \end{figure}
+% \FloatBarrier
+
+% \subsection{Attention weights on decoder}
+% Hooks are used to extract output of each layers of the decoder, their shape is $[N, S, L]$ with $N$ the batch size, $S$ the number of object queries and $L$ the size of the last feature map. 
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/first_layer.png}
+% 	\caption{first layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/second_layer.png}
+% 	\caption{second layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/third_layer.png}
+% 	\caption{third layer}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/fourth_layer.png}
+% 	\caption{fourth layer}
+% \end{figure}
+% \FloatBarrier
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/fifth_layer.png}
+% 	\caption{fifth layer}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.25]{images/decoder_last_layer.png}
+% 	\caption{last layer}
+% \end{figure}
+% \FloatBarrier
+
+% We can see that our model mostly is able to attend the edges of the object directly after the first layer this might be due to the fact that the encoder has already seperated the different instances. 
+
+
+% \subsection{Attention weights on high occlusion objects}
+% Note: I tried a lot of pictures with a lot of objects with high occlusion most of the time the model performed poorly (e.g 1 or 2 false positive that have high occlusion). On this experience query 27 (first prediction) is a prediction with very low probablity (0.1) from the model. For the encoder attention weights relative to the top two points are shown on the left, and the bottom two points are shown on the right.
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/encoder_1st.png}
+% 	\caption{first layer encoder}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/encoder_2nd.png}
+% 	\caption{second layer encoder}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/encoder_3rd.png}
+% 	\caption{third layer encoder}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/encoder_4th.png}
+% 	\caption{fourth layer encoder}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/encoder_5th.png}
+% 	\caption{fifth layer encoder}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/encoder_6th.png}
+% 	\caption{last layer encoder}
+% \end{figure}
+% \FloatBarrier
+
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/decoder_1st.png}
+% 	\caption{first layer decoder}
+% \end{figure}
+% \FloatBarrier
+
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/decoder_2nd.png}
+% 	\caption{second layer decoder}
+% \end{figure}
+% \FloatBarrier
+
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/decoder_3rd.png}
+% 	\caption{third layer decoder}
+% \end{figure}
+% \FloatBarrier
+
+
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/decoder_4th.png}
+% 	\caption{fourth layer decoder}
+% \end{figure}
+% \FloatBarrier
+
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/decoder_5th.png}
+% 	\caption{fifth layer decoder}
+% \end{figure}
+% \FloatBarrier
+
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/decoder_6th.png}
+% 	\caption{last layer decoder}
+% \end{figure}
+% \FloatBarrier
+
+
+% We can see a similar behaviour for object with high occlusion, the decoder does not rectify its bounding box and is able at the first layer to decide the object is by attending its edge using information from the encoder. Also we can see that query 27 and 71 are duplicate predictions somehow the model is able to predict a low probability for the query 27 and predict query 71 with confidence. Moreover looking at the prediction of each object queries we can see that almost all of them are predicting the class Elephant somehow the model is able to chose the object queries that has the best bounding box with high confidence while their attention weights seems to stay identical between each layer. \\
+% We can clearly observe that stacking encoding layers are essential as the first layers predict random instances, and last layers are able to separate instances. On the other hand, the decoder seems to not change its attention weights at each stack, but the paper states significant increase in AP as it stacks more layers on the decoder. Perhaps we should look at the attentions on the the object queries instead of the decoder?
+
+% \subsection{Attention weights on object queries}
+
+% Hooks are used to extract output of self attention of the object queries at each layers of the decoder, their shape is $[N, S, S]$ with $N$ the batch size and $S$ the number of object queries. In this experience we take relative weights for object queries 1, 2, 3, \textbf{27, 71, 92}, 93, 94, 95. Object queries \textbf{27, 71, 92} are prediction with confidence $> 0.1$, the rest are chosen to be object query that should not influence the predictions of \textbf{27, 71, 92}, as they do not involve occlusion or duplicate predictions. Object queries are shown in the same order in the figures. 
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/query_1st.png}
+% 	\caption{first layer object queries}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/query_2nd.png}
+% 	\caption{second layer object queries}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/query_3rd.png}
+% 	\caption{third layer object queries}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/query_4th.png}
+% 	\caption{fourth layer object queries}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/query_5th.png}
+% 	\caption{fifth layer object queries}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.23]{images/query_6th.png}
+% 	\caption{last layer object queries}
+% \end{figure}
+% \FloatBarrier
+
+
+% Object queries  \textbf{27, 71, 92} are prediction with high occlusion and object queries  \textbf{27, 71} are duplicate prediction. Hence we expect their attention weights to be higher. The results validate our hypothesis, indeed at the first and second layers we can see that the object queries attend random object queries, and at the last three layers, object query \textbf{27} only attend its duplicate \textbf{71}, and we can see that object query \textbf{92} also mostly attends object query \textbf{71} which are two predictions with high occlusion. \\
+% In previous experiences it seemed like the decoder did not change its attention weights at each stack, instead it changed its attention weights at the object query level.
+
+
+% \subsection{Single Encoder Double Decoder}
+
+
+% These experiences aim to explore how the attention mechanism works for classification and regression, both task have their decoder and share an encoder. We note for the same length of training a drop of 0.1 in AP
+% \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+% 	\item Visualize attention on decoder1 for classification
+% 	\item Visualize attention on decoder2 for regression
+% \end{itemize}
+
+% \subsubsection{Decoder classification}
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_first.png}
+	
+% 	\caption{Classification Layer 1}
+% \end{figure}
+% \FloatBarrier
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_second.png}
+	
+% 	\caption{Classification Layer 2}
+% \end{figure}
+% \FloatBarrier
+
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_third.png}
+	
+% 	\caption{Classification Layer 3}
+% \end{figure}
+% \FloatBarrier
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_fourth.png}
+	
+% 	\caption{Classification Layer 4}
+% \end{figure}
+% \FloatBarrier
+
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_fifth.png}
+	
+% 	\caption{Classification Layer 5}
+% \end{figure}
+% \FloatBarrier
+		
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_last.png}
+	
+% 	\caption{Classification Layer 6}
+% \end{figure}
+% \FloatBarrier
+
+
+% \subsubsection{Decoder Regression}
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_first.png}
+	
+% 	\caption{Regression Layer 1}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_second.png}
+	
+% 	\caption{Regression Layer 2}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_third.png}
+	
+% 	\caption{Regression Layer 3}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_fourth.png}
+	
+% 	\caption{Regression Layer 4}
+% \end{figure}
+% \FloatBarrier
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_fifth.png}
+	
+% 	\caption{Regression Layer 5}
+% \end{figure}
+% \FloatBarrier
+	
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_last.png}
+	
+% 	\caption{Regression Layer 6}
+% \end{figure}
+% \FloatBarrier
+
+
+
+% \subsubsection{Attention on Encoder}
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_sedd_first.png}
+	
+% 	\caption{Layer 1}
+% \end{figure}
+% \FloatBarrier
+	
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_sedd_second.png}
+	
+% 	\caption{Layer 2}
+% \end{figure}
+% \FloatBarrier
+
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_sedd_third.png}
+	
+% 	\caption{Layer 3}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_sedd_fourth.png}
+	
+% 	\caption{Layer 4}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_sedd_fifth.png}
+	
+% 	\caption{Layer 5}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_sedd_last.png}
+	
+% 	\caption{Layer 6}
+% \end{figure}
+% \FloatBarrier
+
+
+
+% \subsection{Double Encoder Double Decoder}
+
+
+% These experiences aim to explore how the attention mechanism works for classification and regression, we use two encoder and two decoders, one for each tasks. We notice a drop of 3pts in AP.
+% \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+% 	\item Visualize attention on encoder1 for classification
+% 	\item Visualize attention on encoder2 for regression
+% 	\item Visualize attention on decoder1 for classification
+% 	\item Visualize attention on decoder2 for regression
+% \end{itemize}
+
+% \subsubsection{Decoder Classification}
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_first_0.png}
+	
+% 	\caption{Layer 1}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_second_0.png}
+	
+% 	\caption{Layer 2}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_third_0.png}
+	
+% 	\caption{Layer 3}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_fourth_0.png}
+	
+% 	\caption{Layer 4}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_fifth_0.png}
+	
+% 	\caption{Layer 5}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_cls_last_0.png}
+	
+% 	\caption{Layer 6}
+% \end{figure}
+% \FloatBarrier
+
+
+% \subsubsection{Decoder Regression}
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_first_0.png}
+	
+% 	\caption{Layer 1}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_second_0.png}
+	
+% 	\caption{Layer 2}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_third_0.png}
+	
+% 	\caption{Layer 3}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_fourth_0.png}
+	
+% 	\caption{Layer 4}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_fifth_0.png}
+	
+% 	\caption{Layer 5}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/decoder_reg_last_0.png}
+	
+% 	\caption{Layer 6}
+% \end{figure}
+% \FloatBarrier
+
+
+% \subsubsection{Encoder Classification}
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_cls_first_0.png}
+	
+% 	\caption{Layer 1}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_cls_second_0.png}
+	
+% 	\caption{Layer 2}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_cls_third_0.png}
+	
+% 	\caption{Layer 3}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_cls_fourth_0.png}
+	
+% 	\caption{Layer 4}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_cls_fifth_0.png}
+	
+% 	\caption{Layer 5}
+% \end{figure}
+% \FloatBarrier
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_cls_last_0.png}
+	
+% 	\caption{Layer 6}
+% \end{figure}
+% \FloatBarrier
+
+
+% \subsubsection{Encoder Regression}
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_reg_first_0.png}
+	
+% 	\caption{Layer 1}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_reg_second_0.png}
+	
+% 	\caption{Layer 2}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_reg_third_0.png}
+	
+% 	\caption{Layer 3}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_reg_fourth_0.png}
+	
+% 	\caption{Layer 4}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_reg_fifth_0.png}
+	
+% 	\caption{Layer 5}
+% \end{figure}
+% \FloatBarrier
+
+
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[scale=0.2]{images/encoder_reg_last_0.png}
+	
+% 	\caption{Layer 6}
+% \end{figure}
+% \FloatBarrier
+

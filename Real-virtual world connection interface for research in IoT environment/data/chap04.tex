@@ -57,14 +57,14 @@ In the experiment, a VR-IoT platform user performs three actions:
 \begin{enumerate}
     \item Put on Virtual reality headset;
     \item Press the virtual button to establish a Client-Server connection and receive the items list;
-    \item Perform a "Thumbs up" gesture. By rotating one's fist, the lamp brightness changes in the VR-IoT environment\footnote{In both the real and virtual worlds} (Figure~\ref{fig:FullBrightnessOculus-figure}).
+    \item Perform a ``Thumbs up'' gesture. By rotating one's fist, the lamp brightness changes in the VR-IoT environment\footnote{In both the real and virtual worlds} (Figure~\ref{fig:FullBrightnessOculus-figure}).
 \end{enumerate}
 
 
 \begin{figure}
   \centering
   \includegraphics[width = 0.6 \linewidth]{figures/FullBrightnessOculus.png}
-  \caption{"Thumbs up" gesture.}
+  \caption{``Thumbs up'' gesture.}
   \label{fig:FullBrightnessOculus-figure}
 \end{figure}
 
@@ -101,7 +101,7 @@ The hardware specifications are listed in Table~\ref{tab:hardware-specifications
   \centering
   \begin{threeparttable}[c]
     \caption{Hardware specifications in the experimental setup}
-    \label{tab:hardware-specifications-table}c
+    \label{tab:hardware-specifications-table}
     \begin{tabular}{ll}
       \toprule
       Unit    &         Specifications                 \\
@@ -208,10 +208,13 @@ Additional data were analyzed during the experiment, such as the number of frame
 Considering that gesture recognition is processed no more than once per frame, it significantly influenced the user experience, resulting in a big $t_{\Delta}$. The frequency of gesture value retrieval can be called a polling rate. When a polling rate is 1000Hz, the gesture position is retrieved once every millisecond (Table~\ref{tab:polling-rate-table}). There is probably a linear dependency between the time spent on performing the calibration and the polling rate during the test.
 
 \begin{table}
+\let\TPToverlap=\TPTrlap
   \centering
   \begin{threeparttable}[c]
     \caption{Polling rate to response time of gesture recognition dependence}
     \label{tab:polling-rate-table}
+    \begin{tabular}{@{}p{\textwidth}@{}}
+    \centering
     \begin{tabular}{ll}
       \toprule
       Polling rate, Hz    & Response time, ms                 \\
@@ -221,6 +224,7 @@ Considering that gesture recognition is processed no more than once per frame, i
       20Hz & 50ms \\
       10Hz & 100ms \\
       \bottomrule
+    \end{tabular}
     \end{tabular}
   \end{threeparttable}
 \end{table}
@@ -237,4 +241,4 @@ In the next experiment, the author demonstrated that it is possible to work toge
 
 Thus, the speed of the network plays a significant role in the operation of the system. The minimal network latency available now can be significantly reduced in future Wi-Fi 6 networks and 6G networks, significantly improving the simultaneous work inside the same VR-IoT environment. However, it has been observed that operations such as adding new devices to the system will remain time-consuming. Since there is a request to create game objects for each of the Item's widgets, the author assumes that the main delay is associated precisely with the internal processes inside the Unity 3D engine.
 
-The next chapter shows how the VR-IoT research platform developers can theoretically work around these limitations.
+The next chapter shows how the VR-IoT research platform developers can theoretically work around these limitations by presenting IoT devices as Things built from basic functional blocks.

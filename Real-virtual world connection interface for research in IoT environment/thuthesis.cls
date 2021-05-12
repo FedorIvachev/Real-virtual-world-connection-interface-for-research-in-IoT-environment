@@ -840,7 +840,7 @@
         \def\thu@list@algorithm@name{ALGORITHMS}%
         \def\listequationname{EQUATIONS}%
         \def\thu@denotation@name{ABBREVIATIONS}%
-        \def\bibname{REFERENCES}%
+        \def\bibname{References}%
         \def\appendixname{APPENDIX}%
         \def\thu@acknowledgements@name{ACKNOWLEDGEMENTS}%
         \def\thu@resume@name{PUBLICATIONS}%
@@ -851,8 +851,8 @@
         \def\thu@list@figure@table@name{List of Figures and Tables}%
         \def\thu@list@algorithm@name{List of Algorithms}%
         \def\listequationname{List of Equations}%
-        \def\thu@denotation@name{Nomenclature}%
-        \def\bibname{REFERENCES}%
+        \def\thu@denotation@name{List of Symbols and Acronyms}%
+        \def\bibname{References}%
         \def\appendixname{Appendix}%
         \def\thu@acknowledgements@name{Acknowledgements}%
         \def\thu@resume@name{Resume and Academic Achievements}%
@@ -2606,8 +2606,8 @@
 }
 \AtEndOfPackageFile*{biblatex}{
   \AtBeginDocument{
-    \ifthenelse{\equal{\blx@bbxfile}{apa}}{\def\bibname{REFERENCES}}{}
-    \ifthenelse{\equal{\blx@bbxfile}{apa6}}{\def\bibname{REFERENCES}}{}
+    \ifthenelse{\equal{\blx@bbxfile}{apa}}{\def\bibname{References}}{}
+    \ifthenelse{\equal{\blx@bbxfile}{apa6}}{\def\bibname{References}}{}
     \ifthenelse{\equal{\blx@bbxfile}{mla}}{\def\bibname{WORKS CITED}}{}
     \ifthenelse{\equal{\blx@bbxfile}{mla-new}}{\def\bibname{WORKS CITED}}{}
   }
@@ -2903,8 +2903,8 @@
 }
 \AtEndOfPackageFile*{nomencl}{
   \let\nomname\thu@denotation@name
-  \def\thenomenclature{\begin{denotation}[\nom@tempdim]}
-  \def\endthenomenclature{\end{denotation}}
+  \def\theList of Symbols and Acronyms{\begin{denotation}[\nom@tempdim]}
+  \def\endtheList of Symbols and Acronyms{\end{denotation}}
 }
 \AtEndOfPackageFile*{longtable}{
   \pretocmd\LT@array{%

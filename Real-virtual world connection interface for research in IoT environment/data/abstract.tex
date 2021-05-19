@@ -8,11 +8,14 @@
 
 同时，虚拟现实技术近来得到了飞速地发展，并且伴随着新的手部识别技术以及虚拟现实头戴显示器设备的革新，它已证明自己不仅仅是用于游戏目的，而且还得以应用于医疗保健，教育，和科学。
 
-作者在此提出了一种同步机制，该机制可以根据虚拟世界中的动作和事件使真实和虚拟设备持续更新，反之亦然 —— 将应用于真实设备中的动作转移到虚拟世界中去。在本文中，人们或许会质疑，是否可以借助于虚拟现实交互设备开发出这种机制并将其用作为新设备研究方式的一部分，以及是否有可能通过以下方式扩展现实世界的设备 —— 额外的虚拟传感器和交互式对象。
+作者在此提出了一种同步机制，该机制可以根据虚拟世界中的动作和事件使真实和虚拟设备持续更新，反之亦然 —— 将应用于真实设备中的动作转移到虚拟世界中去。本文所探讨的问题为，是否可以借助虚拟现实交互设备来开发这种机制，并将其用作新设备研发工具的一部分。 本论文的主要贡献在于：
   
-本文所研究提出的即是一种适合于该机制的体系结构。该体系结构通过搭建一个原型平台以实现真实世界与虚拟世界之间的无缝对接。借力于各物联网的一个虚拟代表，设备参数（数据值）以及双向数据将在真实世界与虚拟世界之间进行传输，同时系统的性能将会被评估，从而为日后的开发提供数据支撑，也为将来的改进提供参考。本文还讨论了如何调整平台，以使得其能够在混合现实和增强现实设备中运行。尽管该平台目前仍处于原型阶段，但它已被应用至清华大学学生的项目实践当中。
+\begin{enumerate}
+    \item 创新提出了虚实融合AIoT开发和测试平台，用于开发物联网设备、场景和交互方法，可显著节省开发成本，提高效率。
+    \item 提出虚实设备之间的数据同步机制，实现虚拟设备和物理设备的实时状态绑定，并支持设备之间互操作。
+    \item 提供了NUIX Studio 开发工具包，具备丰富的可重用部件和功能，供研究人员快速开发AIoT 原型交互系统。
+\end{enumerate}
 
-该平台可在同一个IoT-VR环境中为多个用户进行同步工作提供可能，此外还可提供先进的物理计算和数据分析，以及其他解决方案的集成。
 
   % 关键词用“英文逗号”分隔，输出时会自动处理为正确的分隔符
   \thusetup{
@@ -26,11 +29,13 @@
    
   In the meantime, Virtual Reality has recently seen rapid development, and with the newer technique of hands recognition, as well as the evolution of Virtual Reality Headsets, it has proven itself as a great instrument not only for gaming purposes but for healthcare, education, and science.
    
-  The author proposes a synchronization mechanism that keeps real and virtual devices up-to-date, according to actions and events in the virtual world and applying actions from the real devices to the virtual world. This thesis asks if, with the help of Virtual Reality interaction devices, such a mechanism can be developed and used as a part of an instrument for research on new devices, and whether it is possible to extend real-world devices with extra virtual sensors and interactive objects.
+  The author proposes a synchronization mechanism that keeps real and virtual devices up-to-date, according to actions and events in the virtual world and applying actions from the real devices to the virtual world. This thesis asks if, with the help of Virtual Reality interaction devices, such a mechanism can be developed and used as a part of an instrument for research on new devices. The main contributions of this thesis include:
   
-  In this thesis, a suitable architecture for this mechanism is proposed. By creating a prototype of the platform for seamless connection between real and virtual worlds, with a virtual representation of each the parameters (data values) of Internet Of Things device and two-way data transfer between the real and virtual worlds, the performance of the system is evaluated, providing results for future development and consideration for future improvements. We also discuss how to adapt the platform for running on Mixed reality and Augmented reality devices. Although the platform is in the prototype stage, it has already been used by students at Tsinghua University in their course projects. 
-  
-  The platform can facilitate simultaneous work by multiple users within the same IoT-VR environment, advanced physics calculation and data analysis, as well as integration of other solutions.
+  \begin{enumerate}
+      \item A novel hybrid virtuality-reality model for developing IoT devices and scenarios, which can significantly save development cost and improve efficiency. 
+      \item A synchronization mechanism that binds the status of virtual devices and physical devices in real time, and supports inter-operations. 
+      \item A development kit, called NUIX-Studio, for researchers to fast prototype AIoT projects, with a rich set of reusable widgets and functionalities. The spatial and temporal synchronization is used to keep the sensor states equal in real and virtual worlds.
+  \end{enumerate}
   
   % Use comma as seperator when inputting
   \thusetup{

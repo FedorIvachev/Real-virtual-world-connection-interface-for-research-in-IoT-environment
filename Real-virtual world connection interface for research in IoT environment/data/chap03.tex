@@ -2,20 +2,18 @@
 
 \chapter{The VR-IoT Research Platform}
 
+In this chapter, we introduce key implementation details and the architecture of the VR-IoT research platform, or, as it was later named, ``NUIX-Studio.''
+
 \section{Platform requirements}
 
-Before the platform's development, several meetings were held to discuss key implementation details and the architecture of the VR-IoT research platform, or, as it was later named, ``NUIX-Studio.''
-
-Based on the first meeting discussion, it was decided that the main functions of the platform would include:
+Based on the first meeting discussion \cite{tsinghua_hci_lab_nuix-studio_2021}, it was decided that the main functions of the platform would include:
 \begin{enumerate}
      \item Visualization of devices;
      \item Interaction with devices;
      \item Simulation of device sensors.
 \end{enumerate}
 
-Our platform must provide an interface for different interaction techniques and simulation of device sensors inside Virtual reality.
-
-After several brainstorming sessions, we proposed dividing device controls between touch interface interaction and other interaction methods, such as voice control, sight control, gesture control, etc. The ability to control devices at a distance impossible in real life, such as lengthening arms, dropping hands, etc., was placed in a separate category. These control methods could be used in the real world in the future by introducing new technologies such as holographic projection.
+Our platform must provide an interface for different interaction techniques and simulation of device sensors inside Virtual reality. The device controls can be divided between touch interface interaction and other interaction methods, such as voice control, sight control, gesture control, etc. The ability to control devices at a distance impossible in real life, such as lengthening arms, dropping hands, etc., was placed in a separate category. These control methods could be used in the real world in the future by introducing new technologies such as holographic projection.
 
 Based on the literature review, the platform should fulfill these minimum requirements:
 \begin{enumerate}
@@ -50,7 +48,7 @@ As it can be seen on the IoT-VR Platform design architecture, the Real-world IoT
   \label{fig:StructureVersion2-figure}
 \end{figure}
 
-\section{Server}
+\section{Server architecture}
 
 \subsection{OpenHAB Server Structure}
 
@@ -219,7 +217,7 @@ After the NUIX-Studio App receives the Item of a specific format, the Semantic m
 
 \section{Platform prototyping}
 
-As written in the beginning of this chapter, the platform should fulfill the minimum requirements of scalability, ease of use and testing, fault tolerance and simultaneous work support. Following these conditions was one of the platform development main tasks. Each next prototype was better than the previous one in terms of one of the requirements. In total, five prototypes have been developed. Further, key features of each of the prototypes are given.
+As written in the beginning of this chapter, the platform should fulfill the minimum requirements of scalability, ease of use and testing, fault tolerance and simultaneous work support. Following these conditions was one of the platform development main tasks. Each next prototype was closer than the previous one to following the requirements. In total, five prototypes have been developed. Further, key features of each of the prototypes are given.
 
 \subsection{Platform distribution}
 

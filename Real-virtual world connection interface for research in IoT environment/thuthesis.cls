@@ -795,7 +795,7 @@
 \newcommand\thu@set@chapter@names{%
   \ifthu@main@language@chinese
     \ctexset{
-      chapter/name   = {第,章},
+      chapter/name   = \MakeUppercase{第,章},
     }%
     \def\bibname{参考文献}%
     \def\appendixname{附录}%
@@ -829,7 +829,7 @@
   \else
     \ifthu@main@language@english
       \ctexset{
-        chapter/name   = \chaptername\space,
+        chapter/name   = \MakeUppercase{\chaptername\space},
       }%
       \def\indexname{Index}%
       \ifthu@degree@bachelor
@@ -840,22 +840,22 @@
         \def\thu@list@algorithm@name{ALGORITHMS}%
         \def\listequationname{EQUATIONS}%
         \def\thu@denotation@name{ABBREVIATIONS}%
-        \def\bibname{References}%
+        \def\bibname{REFERENCES}%
         \def\appendixname{APPENDIX}%
         \def\thu@acknowledgements@name{ACKNOWLEDGEMENTS}%
         \def\thu@resume@name{PUBLICATIONS}%
       \else
-        \def\contentsname{Table of Contents}%
-        \def\listfigurename{List of Figures}%
-        \def\listtablename{List of Tables}%
+        \def\contentsname{TABLE OF CONTENTS}%
+        \def\listfigurename{\MakeUppercase{List of Figures}}%
+        \def\listtablename{\MakeUppercase{List of Tables}}%
         \def\thu@list@figure@table@name{List of Figures and Tables}%
         \def\thu@list@algorithm@name{List of Algorithms}%
         \def\listequationname{List of Equations}%
-        \def\thu@denotation@name{List of Symbols and Acronyms}%
-        \def\bibname{References}%
-        \def\appendixname{Appendix}%
-        \def\thu@acknowledgements@name{Acknowledgements}%
-        \def\thu@resume@name{Resume and Academic Achievements}%
+        \def\thu@denotation@name{\MakeUppercase{List of Symbols and Acronyms}}%
+        \def\bibname{REFERENCES}%
+        \def\appendixname{\MakeUppercase{Appendix}}%
+        \def\thu@acknowledgements@name{\MakeUppercase{Acknowledgements}}%
+        \def\thu@resume@name{\MakeUppercase{Resume and Academic Achievements}}%
       \fi
     \fi
   \fi
@@ -1162,7 +1162,7 @@
   \newcommand{\thu@abstract@name@en}{ABSTRACT}
 \else
   \newcommand{\thu@abstract@name}{摘\quad 要}
-  \newcommand{\thu@abstract@name@en}{Abstract}
+  \newcommand{\thu@abstract@name@en}{ABSTRACT}
 \fi
 \ctexset{%
   chapter = {

@@ -2,7 +2,7 @@
 
 \chapter{\MakeUppercase{The VR-IoT Research Platform}}
 
-In this chapter, we introduce key implementation details and the architecture of the VR-IoT research platform, or, as it was later named, ``NUIX-Studio.'' First, we will give the requirements for the platform architecture, then we will outline the key details in its development, and at the end of the chapter we will show that this architecture satisfies the given requirements. 
+In this chapter, we introduce key implementation details and the structure of the VR-IoT research platform, or, as it was later named, ``NUIX-Studio.'' Firstly, we will give the requirements for the platform architecture, then we will outline the key details in its development.
 
 \section{Platform requirements}
 
@@ -163,16 +163,20 @@ A functional solution for IoT research requires support for various types of dev
       Group &	An Item containing other Items \\
       Image &	The binary data of an image \\
       Location & GPS Coordinates \\
-      Number & Value stored in number format \\
-      Number:<dimension> & Number Item with specified unit support \\
-      Player & Item that control video, audio playback \\
-      String &	Text or binary data \\
-      Switch & Boolean value \\
+      Number & A value stored in number format \\
+      Number:<dimension> & A Number Item with specified unit support \\
+      Player & An Item that controls video, audio playback \\
+      String & Text or binary data \\
+      Switch & A Boolean value \\
       \bottomrule
     \end{tabular}
   \end{threeparttable}
 \end{table}
 
-The universal Item is String since the data collected by IoT sensors can be represented in binary format in almost all cases. Hence, the data operated on by IoT devices can be placed inside Item blocks. Further, the data from each block must be processed inside an Item Controller and transferred to the corresponding Widgets. 
+The universal Item is String since the data collected by IoT sensors can be represented in binary format in almost all cases. Hence, the data operated on by IoT devices can be placed inside Item blocks. Further, the data from each block must be processed inside an Item Controller and transferred to the corresponding Widgets. Nevertheless, this representation of devices needs to satisfy the requirement of scalability of IoT devices.
 
 When the number of Widgets within the system increases, platform performance remains at an acceptable level. Because each Widget is assigned some unique id, the time it takes to access a specific Widget is $\mathcal{O}(1)$ operations. Event processing time takes $\mathcal{O}(n)$ operations, where $n$ is the number of Item Widgets. It is theoretically impossible to reduce the complexity of processing an event since every Widget has to be accessed. In this case, the event processing time is linearly dependent on the number of Widgets connected to the Item. In general, the platform's overall performance also linearly depends on the number of IoT devices in the environment, making it possible to be used in AIoT environments with a high number of devices such as Industrial or Agricultural AIoT.
+
+\section{Summary}
+
+In this chapter, we presented the NUIX-Studio platform structure. By creating unified storage and representation of devices, NUIX-Studio performs IoT virtuality-reality synchronization. The platform is scalable and able to continue operating uninterrupted despite the failure of any of its components. Furthermore, several NUIX-Studio App clients can access the same database and operate the same IoT data simultaneously. In the next chapter, we introduce the NUIX-Studio Development kit, which minimizes the time for research and testing in AIoT scenarios.

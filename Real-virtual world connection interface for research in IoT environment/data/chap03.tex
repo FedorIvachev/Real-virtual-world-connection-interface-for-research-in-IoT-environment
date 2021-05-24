@@ -2,7 +2,7 @@
 
 \chapter{\MakeUppercase{The VR-IoT Research Platform}}
 
-In this chapter, we introduce key implementation details and the structure of the VR-IoT research platform, or, as it was later named, ``NUIX-Studio.'' Firstly, we will give the requirements for the platform architecture, then we will outline the key details in its development.
+In this chapter, we introduce key implementation details and the structure of the VR-IoT research platform, or, as it was later named, ``NUIX-Studio.'' Firstly, we give the requirements for the platform architecture, then we outline the key details in its development.
 
 \section{Platform requirements}
 
@@ -12,7 +12,7 @@ However, in addition to handling interactions with devices, our platform must al
 \begin{enumerate}
 \item Scalability. The performance of the platform should stay acceptable when the number of devices in the system increases. Otherwise, the latency of the synchronization between the devices inside the VR-IoT environment will increase to a level at which the system is unable to perform Data analysis for the research;
 \item Ease of use and testing. Researchers need to be able to efficiently use the NUIX-Studio API and platform tools to create new IoT devices and test them in the VR-IoT environment.
-\item Fault Tolerance. The platform should effectively handle faults coming from both real and virtual worlds to provide a satisfying user experience;
+\item Fault Tolerance. The platform should effectively handle faults to provide a satisfying user experience;
 \item Simultaneous work. As in the real world, where several people can interact with an IoT system at the same time, each of the platform's running instances should be able to operate simultaneously and with the same data.
 \end{enumerate}
 
@@ -97,7 +97,7 @@ Server data is synchronized with Integration layer through REST API (Figure~\ref
   \end{threeparttable}
 \end{table}
 
-States of the Items are received by getting events from the server: once the event is received, the Item state can be retrieved from the Data Transfer Object's (DTO) payload. Only updated data is transferred between Real-world devices HUB and Integration layer. 
+States of the Items are received by getting events from the server: once the event is received, the Item state can be retrieved from the Data Transfer Object's (DTO) payload. Only updated data is transferred between Real-world devices HUB and Integration layer. Data sent during synchronization is stored in a distributed Database.
 
 
 \section{Platform architecture}
@@ -130,7 +130,7 @@ After the NUIX-Studio App requests access to the system to get the list of items
   \label{fig:AppArchitecture-figure}
 \end{figure}
 
-But if the states of the Items are only stored in the App, users will not be allowed to interact with the IoT devices. In other words, the NUIX-Studio App has to provide an interface to interact with the Items. Since different types of Items require different interaction techniques, a Widget object is created for each item type. Widget in NUIX-Studio App is a Unity Virtual object, which can visualize the Item state and update it. For example, it can be an interactable pinch slider for a dimmer Item or a virtual screen for an Image item. By integrating Extra frameworks, the NUIX-Studio platform can provide a wider variety of Widgets and a higher number of supported devices. For example, Oculus Integration support provides an API for hand recognition, SteamVR~\cite{SteamVR2021} support makes it possible to run the NUIX-Studio App on the majority of VR headsets, and Mixed Reality Toolkit~(\cite{MRTK2021}) provides a set of UX components and features.
+But if the states of the Items are only stored in the App, users will not be allowed to interact with the IoT devices. In other words, the NUIX-Studio App has to provide an interface to interact with the Items. Since different types of Items require different interaction techniques, a Widget object is created for each item type. Widget in NUIX-Studio App is a Unity Virtual object, which can visualize the Item state and update it. For example, it can be an interactable pinch slider for a dimmer Item or a virtual screen for an Image item. By integrating Extra frameworks, the NUIX-Studio platform can provide a wider variety of Widgets and a higher number of supported devices. For example, Oculus Integration support provides an API for hand recognition, SteamVR~\cite{SteamVR2021} support makes it possible to run the NUIX-Studio App on the majority of VR headsets, and Mixed Reality Toolkit~cite{MRTK2021} provides a set of UX components and features.
 
 \subsection{NUIX-Studio App Semantic Model}
 

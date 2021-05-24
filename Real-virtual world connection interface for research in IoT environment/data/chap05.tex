@@ -1,6 +1,6 @@
 % !TeX root = ../thuthesis-example.tex
 
-\chapter{\MakeUppercase{Platform performance evaluation}}
+\chapter{\MakeUppercase{NUIX-Studio network and computational performance tests}}
 
 Evaluating how devices are created and how simultaneous work is performed in the IoT-VR environment is an important part of this research. This chapter describes several experiments used for testing the NUIX-Studio platform's performance.
 There are several devices in the example configuration (Figure~\ref{fig:TestingEquipment-figure}):
@@ -19,28 +19,13 @@ There are several devices in the example configuration (Figure~\ref{fig:TestingE
   \label{fig:TestingEquipment-figure}
 \end{figure}
 
-In the first experiment, gesture control functionality is added to the smart lamp\footnote{a Smart vacuum cleaner and a remote PC will be used in the next experiments} by creating Widgets for Light and Gesture Recognition in the virtual environment scene. In other words, the virtual lamp light is equivalent to the real-world one, and a gesture control interface is implemented.
+In the initial experiment, gesture control functionality is added to the smart lamp\footnote{a Smart vacuum cleaner and a remote PC will be used in the next experiments} by creating Tags for Light and Gesture Recognition Widgets in the virtual environment scene (Figure~\ref{fig:ItemEditPage-figure}). In other words, the virtual lamp light is equivalent to the real-world one, and a gesture control interface is implemented. To test the system functioning, a VR-IoT platform user performs three actions:
 
-\section{Server setup}
-As in the previous chapter, Things representing the Smart Lamp and Vacuum Cleaner are added to the server by using a suitable Binding (Figure~\ref{fig:ServerSetupProcedure-figure}).
-
-\begin{figure}
-  \centering
-  \includegraphics[width = 0.9 \linewidth]{figures/ServerSetupProcedure.png}
-  \caption{Server setup procedure.}
-  \label{fig:ServerSetupProcedure-figure}
-\end{figure}
-
-The next step is adding the Items linked to the Things' Channels. The lamp's brightness dimmer is added to the Semantic model. As seen in Figure~\ref{fig:SemanticModelOne-figure}, the user can move the dimmer to control the lamp light's brightness. The real-world lamp will change its brightness based on the value on the server.
-
-\begin{figure}
-  \centering
-  \includegraphics[width = 0.9 \linewidth]{figures/SemanticModelOne.png}
-  \caption{The Semantic model in the first experiment}
-  \label{fig:SemanticModelOne-figure}
-\end{figure}
-
-The next step is adding Item Tags for Gesture and Brightness control (Figure~\ref{fig:ItemEditPage-figure}). Tags provide information to the NUIX-Studio App about which Widgets it needs to create for the Item.
+\begin{enumerate}
+    \item Put on Virtual reality headset;
+    \item Press the virtual button to establish a Client-Server connection and receive the items list;
+    \item Perform a ``Thumbs up'' gesture. By rotating one's fist, the lamp brightness changes in the VR-IoT environment\footnote{In both the real and virtual worlds.} (Figure~\ref{fig:FullBrightnessOculus-figure}).
+\end{enumerate}
 
 \begin{figure}
   \centering
@@ -48,17 +33,6 @@ The next step is adding Item Tags for Gesture and Brightness control (Figure~\re
   \caption{Item Edit Page.}
   \label{fig:ItemEditPage-figure}
 \end{figure}
-
-The server has been set up to connect to NUIX-Studio App instances.
-
-\section{Running NUIX-Studio App}
-
-In the experiment, a VR-IoT platform user performs three actions:
-\begin{enumerate}
-    \item Put on Virtual reality headset;
-    \item Press the virtual button to establish a Client-Server connection and receive the items list;
-    \item Perform a ``Thumbs up'' gesture. By rotating one's fist, the lamp brightness changes in the VR-IoT environment\footnote{In both the real and virtual worlds} (Figure~\ref{fig:FullBrightnessOculus-figure}).
-\end{enumerate}
 
 
 \begin{figure}
@@ -80,13 +54,11 @@ The user of the platform performed these actions\footnote{In this experiment, th
   \label{fig:BrightnessControl-figure}
 \end{figure}
 
-\section{Performance analysis}
+\section{Testing complex computations and simultaneous work scenarios}
 
-The analysis of platform performance is not the study's primary goal, but it helps with finding bottlenecks. 
+The analysis of platform performance is not the study's primary goal, but it helps with finding bottlenecks. The following experiment shows that it is viable to perform rendering tasks on a separate server. Having a common database for all instances of the application will help several users to work simultaneously within the system.
 
-The following experiment shows that it is viable to perform rendering tasks on a separate server. Having a common database for all instances of the application will help several users to work simultaneously within the system.
-
-The first experiment is a system startup analysis, performed on three devices by registering the startup time (Figure~\ref{fig:SystemStartupScheme-figure}).
+The first experiment is a system startup analysis, performed on three devices by registering the startup time (Figure~\ref{fig:SystemStartupScheme-figure}). The hardware specifications are listed in Table~\ref{tab:hardware-specifications-table} \footnote{A Localhost PC is a notebook running the openHAB server as well as one instance of NUIX-Studio App; A Remote PC is a computer running one instance of the NUIX-Studio App and connected to the same Wi-Fi network as the localhost PC; Oculus Quest is a Virtual Reality Headset running the NUIX-Studio APP and connected to the same Wi-Fi network as the PCs.}.
 
 \begin{figure}
   \centering
@@ -94,8 +66,6 @@ The first experiment is a system startup analysis, performed on three devices by
   \caption{System startup scheme.}
   \label{fig:SystemStartupScheme-figure}
 \end{figure}
-
-The hardware specifications are listed in Table~\ref{tab:hardware-specifications-table} \footnote{A Localhost PC is a notebook running the openHAB server as well as one instance of NUIX-Studio App; A Remote PC is a computer running one instance of the NUIX-Studio App and connected to the same Wi-Fi network as the localhost PC; Oculus Quest is a Virtual Reality Headset running the NUIX-Studio APP and connected to the same Wi-Fi network as the PCs.}.
 
 \begin{table}
   \centering
@@ -114,7 +84,7 @@ The hardware specifications are listed in Table~\ref{tab:hardware-specifications
   \end{threeparttable}
 \end{table}
 
-Each test was performed on a new Unity App instance to avoid caching influence. Then, mean values for the tests were calculated (Figure~\ref{fig:SystemInitTime-figure}).
+Each test was performed on a new Unity App instance to avoid caching influence. Then, mean values for the tests were calculated. As seen in Figure~\ref{fig:SystemInitTime-figure}, the system initialization is a time-consuming operation, on average taking from 200ms to over 600ms to perform.
 
 \begin{figure}
   \centering
@@ -122,8 +92,6 @@ Each test was performed on a new Unity App instance to avoid caching influence. 
   \caption{System initialization time measured on different client devices, in ms}
   \label{fig:SystemInitTime-figure}
 \end{figure}
-
-As seen in Figure~\ref{fig:SystemInitTime-figure}, the system initialization is a time-consuming operation, on average taking from 200ms to over 600ms to perform.
 
 In the next experiment, the event processing time was measured. On one of the devices running the NUIX-Studio App instance, a user changed an Item value \footnote{In this case, the brightness of the smart bulb was changed by moving the corresponding pinch slider widget}. The server processed the received request to change the Item parameter, and then an Event containing information about the new Item value was sent to all devices connected to the server. The device on which this Item change occurred ignored the new incoming value because it was equal to the old value. Next, the processing time of a request on another device was measured (Figure~\ref{fig:EventProcessingScheme-figure}).
 
@@ -139,15 +107,15 @@ As seen on the resulting histogram (Figure~\ref{fig:EventProcessingTime-figure})
 \begin{figure}
   \centering
   \includegraphics[width = 0.9 \linewidth]{figures/EventProcessingTime.png}
-  \caption{Event processing time measured on different devices, in \textmu{}s}
+  \caption{Event Processing time measured on different devices, in \textmu{}s}
   \label{fig:EventProcessingTime-figure}
 \end{figure}
 
 The results of this experiment will be used in the future. System initialization time is based on the device hardware performance. In some later experiments, it is better not to include system initialization in time calculations. Event processing time is relatively low for each device, and can be ignored in most cases.
 
-The following experiment uses a Virtual reality headset, a smart light bulb, and a server running an application on it. For instance, a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup is used in industry to provide a comfortable lighting level while maintaining an optimal amount of energy consumption. The light sensor is triggered precisely at a sufficiently large value of the lamp brightness. Hence, the sensor must adjust to the brightness level of the light bulb very accurately.
+The following experiment uses a Virtual reality headset, a smart light bulb, and a server running an application on it. For instance, a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup can be used in industry to provide a comfortable lighting level while maintaining an optimal amount of energy consumption. The light sensor is triggered precisely at a sufficiently large value of the lamp brightness. Hence, the sensor must adjust to the brightness level of the light bulb very accurately.
 
-The previous experiment showed that gesture control could be used to adjust a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary for specific scenarios. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. Supposing that the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different amounts of time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures (such as starting the system), the user had to repeat the step by setting the brightness of the light to the specified value twice. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
+The previous experiment showed that gesture control could be used to adjust a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary for specific scenarios. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. In this experiment the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different amounts of time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures (such as starting the system), the user had to repeat the step by setting the brightness of the light to the specified value twice. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
 
 
 \begin{equation}
@@ -238,6 +206,6 @@ In the next experiment, the author demonstrated that it is possible to work toge
     \item Time interval from changing an Item on the remote PC to updating the widgets on localhost PC did not exceed 60ms.
 \end{enumerate}
 
-Thus, the speed of the network plays a significant role in the operation of the system. The minimal network latency available now can be significantly reduced in future Wi-Fi 6 networks and 6G networks, significantly improving the simultaneous work inside the same VR-IoT environment. However, it has been observed that operations such as adding new devices to the system will remain time-consuming. Since there is a request to create game objects for each of the Item's widgets, the author assumes that the main delay is associated precisely with the internal processes inside the Unity 3D engine. The delays connected to hand recognition will continue to decrease, since every new generation of Virtual Reality headsets has a higher refresh rate screens compared to the previous ones. 
+Thus, the speed of the network plays a significant role in the operation of the system. The minimal network latency available now can be significantly reduced in future Wi-Fi 6 networks and 6G networks, significantly improving the simultaneous work inside the same VR-IoT environment. However, it has been observed that operations such as adding new devices to the system will remain time-consuming. Since there is a request to create Unity Game Objects for each of the Item's widgets, the author assumes that the main delay is associated precisely with the internal processes inside the Unity 3D engine. The delays connected to hand recognition will continue to decrease, since every new generation of Virtual Reality headsets has a higher refresh rate screens compared to the previous ones. 
 
 The NUIX-Studio App application is provided in the next chapter. Several hypothesis connected to research in AIoT-VR have been tested with help of the VR-IoT platform. 

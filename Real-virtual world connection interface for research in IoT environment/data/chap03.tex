@@ -25,7 +25,7 @@ By dividing the NUIX-Studio structure into these three layers, the platform beco
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.9\linewidth]{figures/BasicPlatformStructure.png}
+  \includegraphics[width=1.0\linewidth]{figures/BasicPlatformStructure.png}
   \caption{Simplified structure of NUIX Studio. The real-world IoT devices HUB is an openHAB server, while NUIX-Studio server is an instance of the NUIX-Studio App responsible for the computations.}
   \label{fig:BasicPlatformStructure-figure}
 \end{figure}
@@ -130,7 +130,7 @@ After the NUIX-Studio App requests access to the system to get the list of items
   \label{fig:AppArchitecture-figure}
 \end{figure}
 
-But if the states of the Items are only stored in the App, users will not be allowed to interact with the IoT devices. In other words, the NUIX-Studio App has to provide an interface to interact with the Items. Since different types of Items require different interaction techniques, a Widget object is created for each item type. Widget in NUIX-Studio App is a Unity Virtual object, which can visualize the Item state and update it. For example, it can be an interactable pinch slider for a dimmer Item or a virtual screen for an Image item. By integrating Extra frameworks, the NUIX-Studio platform can provide a wider variety of Widgets and a higher number of supported devices. For example, Oculus Integration support provides an API for hand recognition; SteamVR~\cite{SteamVR2021} support makes it possible to run the NUIX-Studio App on the majority of VR headsets.
+But if the states of the Items are only stored in the App, users will not be allowed to interact with the IoT devices. In other words, the NUIX-Studio App has to provide an interface to interact with the Items. Since different types of Items require different interaction techniques, a Widget object is created for each item type. Widget in NUIX-Studio App is a Unity Virtual object, which can visualize the Item state and update it. For example, it can be an interactable pinch slider for a dimmer Item or a virtual screen for an Image item. By integrating Extra frameworks, the NUIX-Studio platform can provide a wider variety of Widgets and a higher number of supported devices. For example, Oculus Integration support provides an API for hand recognition, SteamVR~\cite{SteamVR2021} support makes it possible to run the NUIX-Studio App on the majority of VR headsets, and Mixed Reality Toolkit~(\cite{MRTK2021}) provides a set of UX components and features.
 
 \subsection{NUIX-Studio App Semantic Model}
 

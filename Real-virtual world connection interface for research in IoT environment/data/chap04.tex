@@ -2,13 +2,14 @@
 
 \chapter{\MakeUppercase{NUIX-Studio Development kit}}
 
-\section{Widgets support}
+Дев кит используется разработчиками для создания новых устройств.
+Он включает в себя:
+1. Дизайнер устройств
+2. api для поддержки сложных вычислений
+3. api и инструменты для визуализации даты iot устройств
+4. api для создания собственных виджетов
 
-The platform provides only basic Widgets for the Items. These Widgets are used to give an example of how to visualize the IoT devices' data. Researchers can create Widgets specific to the device they develop using the NUIX-Studio API.
-
-However, in most cases, researchers can save time by using the basic Widgets. Several Widgets based on the Mixed Reality Toolkit (\cite{MRTK2021}), such as Color Picker, Pinch Slider, Switcher, and Button, were developed. Light-connection, Player-, Location- and Group-based Widgets were developed without using the Mixed Reality Toolkit.
-
-\section{Things designer}
+\section{Things Designer}
 
 By using a block structure to represent devices, researchers can modify various parameters of existing devices by changing specific blocks and can create new devices by combining the blocks. This action is possible in a tool called Things designer. This tool is described in detail below.
 
@@ -21,6 +22,12 @@ The Semantic model is visualized inside the Web interface. Researchers can assig
   \label{fig:PersistenceExample-figure}
 \end{figure}
 
+
+\section{Performance-based calculations}
+
+\subsection{Physics support}
+
+With the transfer of resource-intensive calculations to a separate server, it becomes possible to perform more reliable physical object simulations. Computations such as processing light, sound, and electromagnetic waves of other frequencies and various substances such as gas, water, are only limited by existing algorithms.
 \section{Device visualization and real-virtual world location mapping}
 
 Each of the IoT devices is visualized through Widgets, but designing Widgets by 3D modeling requires additional time. If a 3D model of the device already exists, the researcher can add it to the platform as a Widget and then connect extra widgets to it.
@@ -31,11 +38,21 @@ The resulting Widgets of 3D models can be added to the Virtual reality. In the c
 
 Various devices can track the movement of real IoT devices in the real world, such as Bluetooth tags, QR codes, magnetic field sensors, etc. Researchers can use the API to change the position of each widget. Thus, when the device's position in the real world changes, the device's Widgets position in the virtual world will also change. It is also possible to perform the opposite action, but this requires a device that will move IoT devices in the real world.
 
-\section{Physics support}
 
-With the transfer of resource-intensive calculations to a separate server, it becomes possible to perform more reliable physical object simulations. Computations such as processing light, sound, and electromagnetic waves of other frequencies and various substances such as gas, water, are only limited by existing algorithms.
+\section{Widgets support}
 
-\section{Conclusion}
+The platform provides only basic Widgets for the Items. These Widgets are used to give an example of how to visualize the IoT devices' data. Researchers can create Widgets specific to the device they develop using the NUIX-Studio API.
+
+However, in most cases, researchers can save time by using the basic Widgets. Several Widgets based on the Mixed Reality Toolkit, such as Color Picker, Pinch Slider, Switcher, and Button, were developed. Light-connection, Player-, Location- and Group-based Widgets were developed without using the Mixed Reality Toolkit.
+
+
+\section{Summary}
+
+убрать
+убрать
+убрать
+убрать
+
 
 Thus, it was shown that the platform's architecture supports all possible devices, creation of new devices from existing ones, and placing them in the virtual world. The platform enables the efficient processing of requests from an unlimited number of devices.
 

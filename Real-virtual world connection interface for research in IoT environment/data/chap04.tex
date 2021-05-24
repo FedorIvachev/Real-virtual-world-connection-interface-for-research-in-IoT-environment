@@ -2,18 +2,19 @@
 
 \chapter{\MakeUppercase{NUIX-Studio Development kit}}
 
-Дев кит используется разработчиками для создания новых устройств.
-Он включает в себя:
-1. Дизайнер устройств
-2. api для поддержки сложных вычислений
-3. api и инструменты для визуализации даты iot устройств
-4. api для создания собственных виджетов
+NUIX-Studio Development Kit helps researchers to fast prototype AIoT projects. This chapter briefly introduces each of its components, which are listed below:
+\begin{enumerate}
+    \item Things designer;
+    \item Complex computations API;
+    \item API and tools for IoT data visualization and analysis;
+    \item API for creating Widgets.
+\end{enumerate}
 
 \section{Things Designer}
 
 By using a block structure to represent devices, researchers can modify various parameters of existing devices by changing specific blocks and can create new devices by combining the blocks. This action is possible in a tool called Things designer. This tool is described in detail below.
 
-The Semantic model is visualized inside the Web interface. Researchers can assign Widgets for each of the Items and group the Items together. After the setup is completed, researchers can further develop new devices inside the NUIX-Studio App. Next, they can create new Widgets in VR and connect them to the existing Items. The position for each of the Widgets is added to the Semantic model as an Item. Having set the Widget's position and other parameters, the user can exit the application on a device and then continue research using a different device or analyze the items' data stored on the server. Since changes in Items values are periodically written to the server, they can be visualized using the built-in system tools (Figure~\ref{fig:PersistenceExample-figure}) or further analyzed using external frameworks providing useful insights. The NUIX-Studio App also allows the creation of not only Widgets but also Items.
+The Semantic model is visualized inside the Web interface. Researchers can assign Widgets for each of the Items and group the Items together. After the setup is completed, researchers can further develop new devices inside the NUIX-Studio App. Next, they can create new Widgets in Virtual reality and connect them to the existing Items. The position for each of the Widgets is added to the Semantic model as an Item. Having set the Widget's position and other parameters, the user can exit the application on a device and then continue research using a different device or analyze the items' data stored on the server. Since changes in Items values are periodically written to the server, they can be visualized using the built-in system tools (Figure~\ref{fig:PersistenceExample-figure}) or further analyzed using external frameworks providing useful insights. The NUIX-Studio App also allows the creation of not only Widgets but also Items.
 
 \begin{figure}
   \centering
@@ -23,12 +24,16 @@ The Semantic model is visualized inside the Web interface. Researchers can assig
 \end{figure}
 
 
-\section{Performance-based calculations}
+\section{Complex computations API}
 
 \subsection{Physics support}
 
 With the transfer of resource-intensive calculations to a separate server, it becomes possible to perform more reliable physical object simulations. Computations such as processing light, sound, and electromagnetic waves of other frequencies and various substances such as gas, water, are only limited by existing algorithms.
-\section{Device visualization and real-virtual world location mapping}
+
+
+
+
+\section{API and tools for IoT data visualization and analysis}
 
 Each of the IoT devices is visualized through Widgets, but designing Widgets by 3D modeling requires additional time. If a 3D model of the device already exists, the researcher can add it to the platform as a Widget and then connect extra widgets to it.
 
@@ -39,7 +44,7 @@ The resulting Widgets of 3D models can be added to the Virtual reality. In the c
 Various devices can track the movement of real IoT devices in the real world, such as Bluetooth tags, QR codes, magnetic field sensors, etc. Researchers can use the API to change the position of each widget. Thus, when the device's position in the real world changes, the device's Widgets position in the virtual world will also change. It is also possible to perform the opposite action, but this requires a device that will move IoT devices in the real world.
 
 
-\section{Widgets support}
+\section{API for creating Widgets}
 
 The platform provides only basic Widgets for the Items. These Widgets are used to give an example of how to visualize the IoT devices' data. Researchers can create Widgets specific to the device they develop using the NUIX-Studio API.
 

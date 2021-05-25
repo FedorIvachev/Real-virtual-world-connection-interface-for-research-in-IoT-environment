@@ -3,6 +3,9 @@
 \chapter{\MakeUppercase{NUIX-Studio network and computational performance tests}}
 
 Evaluating how devices are created and how simultaneous work is performed in the IoT-VR environment is an important part of this research. This chapter describes several experiments used for testing the NUIX-Studio platform's performance.
+
+\section{Testing equipment preconfiguration}
+
 There are several devices in the example configuration (Figure~\ref{fig:TestingEquipment-figure}):
 \begin{enumerate}
     \item A Smart Wi-Fi lamp;
@@ -54,11 +57,9 @@ The user of the platform performed these actions\footnote{In this experiment, th
   \label{fig:BrightnessControl-figure}
 \end{figure}
 
-\section{Testing complex computations and simultaneous work scenarios}
+\section{System startup and event processing time measurements}
 
-The analysis of platform performance is not the study's primary goal, but it helps with finding bottlenecks. The following experiment shows that it is viable to perform rendering tasks on a separate server. Having a common database for all instances of the application will help several users to work simultaneously within the system.
-
-The first experiment is a system startup analysis, performed on three devices by registering the startup time (Figure~\ref{fig:SystemStartupScheme-figure}). The hardware specifications are listed in Table~\ref{tab:hardware-specifications-table} \footnote{A Localhost PC is a notebook running the openHAB server as well as one instance of NUIX-Studio App; A Remote PC is a computer running one instance of the NUIX-Studio App and connected to the same Wi-Fi network as the localhost PC; Oculus Quest is a Virtual Reality Headset running the NUIX-Studio APP and connected to the same Wi-Fi network as the PCs.}.
+The first experiment is a system startup analysis, performed on three devices by registering the startup time (Figure~\ref{fig:SystemStartupScheme-figure}). The hardware specifications are listed in Table~\ref{tab:hardware-specifications-table}~\footnote{A Localhost PC is a notebook running the openHAB server as well as one instance of NUIX-Studio App; A Remote PC is a computer running one instance of the NUIX-Studio App and connected to the same Wi-Fi network as the localhost PC; Oculus Quest is a Virtual Reality Headset running the NUIX-Studio APP and connected to the same Wi-Fi network as the PCs.}.
 
 \begin{figure}
   \centering
@@ -113,7 +114,9 @@ As seen on the resulting histogram (Figure~\ref{fig:EventProcessingTime-figure})
 
 The results of this experiment will be used in the future. System initialization time is based on the device hardware performance. In some later experiments, it is better not to include system initialization in time calculations. Event processing time is relatively low for each device, and can be ignored in most cases.
 
-The following experiment uses a Virtual reality headset, a smart light bulb, and a server running an application on it. For instance, a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup can be used in industry to provide a comfortable lighting level while maintaining an optimal amount of energy consumption. The light sensor is triggered precisely at a sufficiently large value of the lamp brightness. Hence, the sensor must adjust to the brightness level of the light bulb very accurately.
+\section{Testing complex computations}
+
+The analysis of platform performance is not the study's primary goal, but it helps with finding bottlenecks. The following experiment shows that it is viable to perform rendering tasks on a separate server. The experiment equipment includes a Virtual reality headset, a smart light bulb, and a server running an application on it. For instance, a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup can be used in industry to provide a comfortable lighting level while maintaining an optimal amount of energy consumption. The light sensor is triggered precisely at a sufficiently large value of the lamp brightness. Hence, the sensor must adjust to the brightness level of the light bulb very accurately.
 
 The previous experiment showed that gesture control could be used to adjust a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary for specific scenarios. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. In this experiment the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different amounts of time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures (such as starting the system), the user had to repeat the step by setting the brightness of the light to the specified value twice. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
 
@@ -199,8 +202,9 @@ Considering that gesture recognition is processed no more than once per frame, i
 
 However, the experiment's main challenge was to show how transferring resource-intensive computing from a VR headset to a server improves user experience, because this is significant for the VR-IoT Research platform. Thus, the experiment can be considered successful.\footnote{Please note that this experiment cannot be considered scientifically substantiated since the number of tests and the number of participants was relatively small. In addition, it was impossible to control external factors that add random error, such as system optimization (which affects the stability of the frame rate), room lighting (which affects the accuracy of hand recognition), the size of the participants' hands, and the participants' experience with virtual reality systems. As a result, reproducing this experiment is almost impossible. Nevertheless, this experiment serves as an example of the need to transfer resource-intensive computing from the VR headset to the server.}
 
+\section{Testing simultaneous work scenarios}
 
-In the next experiment, the author demonstrated that it is possible to work together in one VR-IoT environment by adding new IoT devices to the system and changing their parameters:
+In the experiment, the author demonstrated that it is possible to work together in one VR-IoT environment by adding new IoT devices to the system and changing their parameters:
 \begin{enumerate}
     \item The time for adding a device to the system is limited by the performance of a specific platform and the speed of the Internet connection within the Wi-Fi network. When running 300 sequential ping tests from a remote PC to a localhost PC, all the values ​​obtained were less than 100ms, with 90 percent of the values ranging from 45ms to 70ms. The time spent by the device on creating widgets for a smart vacuum cleaner roughly corresponded to the time of system initialization;
     \item Time interval from changing an Item on the remote PC to updating the widgets on localhost PC did not exceed 60ms.

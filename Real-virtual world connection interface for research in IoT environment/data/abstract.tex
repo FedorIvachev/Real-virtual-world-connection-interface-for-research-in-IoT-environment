@@ -4,17 +4,17 @@
 
 \begin{abstract}
 
-近年来，泛在感知、人机交互等计算机技术不断发展，使得万物互联、智能空间等应用逐渐成为可能：通过在衣服、家具等物品中嵌入芯片或微控制器，实现传感器数据的获取、储存、分析并共享到互联网。基于上述传感数据，用户可以通过嵌入式麦克风，扬声器和信息显示器等输入输出接口与智能设备进行信息交互。随着5G 和 6G 网络的快速发展，我们可以期待未来对成千上万台设备的连接可以做到快速且节能。设备之间更高数据的共享以及对大数据分析的改进提升，促进着物联网的进一步发展。而对于智能空间的研发来说，目前由于缺乏能够使物理设备快速集成到现实世界应用场景的标准软件，广大应用开发者在针对个例应用进行定制开发，产生大量重复的工程实现，导致严重的人力和资源的浪费。同时，随交互场景智能化不断提高，场景复杂性也不断提升，因而导致交互场景的开发成本高周期长；交互验证需要依托场景完成，验证滞后导致交互效果难以保证符合预期，进而需要更多轮次更长周期的修正迭代。
+近年来，计算设备的成本不断降低。我们即将进入以多个智能设备服务于用户为特征的AIoT时代。同时，通信技术快速发展，比如5G 和 6G网络，提供了高效连接这些设备的方法。因此，低功耗传感器和微计算控制器将在家电、衣服、家具等物体中联合地感知人们的行为并提供服务。然而，开发AIoT 应用和场景成本高昂。工程师们需要购买智能设备、实现连接，然后在此基础之上构建功能。在研究人员可以研究系统的用户体验之前，需要大量的工程开销。
+为了解决这个限制，本文提出利用虚拟现实来模拟用户体验的方法。最近，虚拟现实技术得到了显著的发展，包括精确的手部识别技术，更轻的头盔和更令人满意的显示质量等。虚拟现实不仅在游戏中，同时在健康、教育和科学中都被证明是一个有效的工具。为了利用虚拟现实的优势来模拟用户体验，本文作者建立了一个虚实融合的智能空间交互研究平台。平台包括一个将真实设备和虚拟设备连接在一起的同步机制。换言之，设备的状态可以同时被虚拟世界和真实世界中的动作和事件来影响。本文描述了这个平台是如何开发的以及评测结果。
 
-同时，虚拟现实技术近来得到了飞速地发展，并且伴随着手部识别技术以及虚拟现实头戴显示器设备的革新，已不仅仅可用于娱乐应用，而且还得以应用于医疗保健，教育，和科学研究。
-
-作者在此提出了一种同步机制，该机制可以根据虚拟世界中的动作和事件一致同步更新真实和虚拟设备状态，反之亦然——将应用于真实设备中的动作同步到虚拟世界中去。本文所探讨的问题为，是否可以借助虚拟现实交互设备来开发这种机制，并将其用于研发创新智能空间和交互设备。本论文的主要贡献在于：
-  
+本文的贡献包括： 
 \begin{enumerate}
     \item 创新提出了虚实融合AIoT开发和测试平台，用于开发物联网设备、场景和交互方法，可显著节省开发成本，提高效率。
     \item 提出虚实设备之间的数据同步机制，实现虚拟设备和物理设备的实时状态绑定，并支持设备之间互操作。
-    \item 提供了开发工具包，具备丰富的可重用部件和功能，供研究人员快速开发AIoT 原型交互系统。
+    \item 提供了NUIX Studio 开发工具包，具备丰富的可重用部件和功能，供研究人员快速开发AIoT 原型交互系统。
 \end{enumerate}
+
+
 
 
   % 关键词用“英文逗号”分隔，输出时会自动处理为正确的分隔符
@@ -25,17 +25,19 @@
 
 \begin{abstract*}
 
-  In recent years processing power has become so cheap that making objects around us intelligent is no longer a challenge: using energy-efficient System-on-Chips or microcontrollers in clothes, furniture and other things helps to monitor our activity, store sensors' data, analyze it and share it to the Internet. Such smart things can interact with us using embedded microphones, speakers and information displays. The rapid development of 5G- and 6G-networks in the near future will make it possible to provide a fast and energy-efficient way to connect thousands of devices no longer attached to a single location. Higher data sharing between the devices and improved Big Data analysis will lead to further evolution of the Internet of Things. However, most researchers develop software applications for specific scenarios, which leads to repetitive code in projects, resulting in a severe waste of workforce and resources. At the same time, the complexity of the AIoT environments increases as well, resulting in high development costs and long prototyping cycles; the testing of the device interaction parameters must be performed in the real-world environment, which leads to additional costs for creating and testing device prototypes.  
-   
-  In the meantime, Virtual Reality has recently seen rapid development, and with the newer technique of hands recognition, as well as the evolution of Virtual Reality headsets, it has proven itself as a great instrument not only for gaming purposes but for healthcare, education, and science.
-   
-  The author proposes a synchronization mechanism that keeps real and virtual devices up-to-date, according to actions and events in the virtual world and applying actions from the real devices to the virtual world. This thesis asks if, with the help of Virtual Reality interaction devices, such a mechanism can be developed and used as a part of an instrument for research on new devices. The main contributions of this thesis include:
+In recent years, the cost of computing devices is continuously decreasing and we will soon enter the AIoT era with a set of smart devices serving us around. Meanwhile, the rapid development of communication technology such as 5G- and 6G-networks provides an efficient way to connect these devices. As a result, energy-efficient sensors and microcontrollers in appliances, clothes, furniture, and so on are going to work together to sense people’s behavior and provide services. However, developing AIoT applications and scenarios is cost. Engineers have to purchase smart devices, make them connected and build functions on them. This requires a lot of engineering efforts before researchers can study the user experience of the system.   
+
+To address this limitation, the thesis proposes to leverage Virtual Reality to simulate user experience.  Virtual Reality techniques have improved a lot recently, such as accurate hand recognition, lighter headsets, more satisfying display quality and so on. Virtual Reality has proven itself as an effective instrument not only for gaming purposes but for healthcare, education, and science. To leverage the advantage of Virtual Reality to simulate user experience, the author builds an interaction research platform for smart space based on Virtuality-Reality hybrid model. The platform includes a synchronization mechanism that keeps real and virtual devices connected. In other words, the status of the devices can be affected by both the actions and events in the virtual world and also those from real world. The thesis describes how such a platform is developed as well as the evaluation results.
+
+The main contributions of this thesis include: 
   
   \begin{enumerate}
       \item A novel hybrid virtuality-reality model for developing IoT devices and scenarios, which can significantly save development costs and improve the efficiency of research. 
       \item A synchronization mechanism that binds the status of virtual devices and physical devices in real time and supports inter-operations. 
-      \item A development kit for researchers to fast prototype AIoT projects, with a rich set of reusable widgets and functionalities.
+      \item A development kit, called NUIX-Studio, for researchers to fast prototype AIoT projects, with a rich set of reusable widgets and functionalities.
   \end{enumerate}
+
+
   
   % Use comma as seperator when inputting
   \thusetup{
